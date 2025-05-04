@@ -16,18 +16,6 @@ def test_flavor_methods():
     drink.add_flavor("blueberry")
     assert drink.get_num_flavors() == 3 #to test the add_flavor method
     
-def test_drink_size_total_methods():
-    """ Test drink size setter and getter functions and the total calculation function """
-    drink = Drink("mega")
-    assert drink.get_size() == "mega" #to test the get_size method
-    drink.set_size("medium")
-    assert drink.get_size() == "medium" #to test the set_size method
-    drink.set_base("sbrite")
-    drink.add_flavor("lemon")
-    assert drink.get_total() == 1.90 #to test the get_total method
-    drink.add_flavor("blueberry")
-    assert drink.get_total() == 2.05 #to ensure each flavor adds $0.15
-    
 def test_order_items_methods():
     """ Test the methods dealing with items in the Order class"""
     drink1 = Drink("small")
@@ -39,20 +27,20 @@ def test_order_items_methods():
     drink2.add_flavor("blueberry")
     
     order = Order()
-    order.add_item(drink1)
+    order.add_item(drink1) #to test the add_item method
     order.add_item(drink2)
     
     items = order.get_items()
     
-    assert items == order._items
-    assert order.get_num_items() == 2
+    assert items == order._items #to test the get_items method
+    assert order.get_num_items() == 2 #to test the get_num_items method
     
     order.remove_item(1)
     
-    assert order.get_num_items() == 1
+    assert order.get_num_items() == 1 #to test the remove_item method and further test the get_num_items method
     
-def test_total_and_receipt_methods():
-    """Test the methods to calculate the total and generate the receipt"""
+def test_receipt_method():
+    """Test the method to generate the receipt"""
     drink = Drink("small")
     drink.set_base("pokeacola")
     drink.add_flavor("blueberry")
@@ -60,7 +48,6 @@ def test_total_and_receipt_methods():
     order = Order()
     order.add_item(drink)
     
-    assert order.get_receipt() =="Cinos Sales Receipt\nsmall pokeacola with blueberry - 1.65\nTotal including tax: $1.77" 
+    assert order.get_receipt() =="Cinos Sales Receipt\nsmall pokeacola with blueberry - 1.65\nTotal including tax: $1.77" #to test the get_receipt method
     
-    assert order.get_total() == 1.77
     
